@@ -1,0 +1,19 @@
+<%= render "posts/shared/header"%>
+<% @posts.each do |post| %>
+    <div class="post-wrapper">
+        <div class="about-post">
+            <ul class="about-user">
+                <li><%= post.author.username %></li>
+            </ul>
+            <div class="post time">
+                <%= post.created_at %>
+            </div>
+        </div>
+        <div class="content">
+            <%= post.content %>
+        </div>
+        <ul class="post-footer">
+            <li>Likes: <% post.likes %></li>
+        </ul>
+    </div>
+<% end %>

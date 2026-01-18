@@ -1,0 +1,15 @@
+<h1>MyX</h1>
+<%= form_with model: @post do |f| %>
+    <div>
+        <%= f.text_area :content, placeholder: "What's happening"%><br>
+        <%= f.submit %>
+    </div>
+    <% if @post.errors.any? %>
+        <p><%= @post.errors.full_messages.count %> <%= "error".pluralize(@post.errors.full_messages.count) %> prevented us from creating your post</p>
+        <ul>
+            <% @post.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+    <% end %>
+<% end %>

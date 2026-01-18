@@ -10,3 +10,5 @@
 4.times do |i|
   User.create!(username: "user#{i + 1}", email: "user#{i + 1}@example.com", password: "qwertyuiop")
 end
+
+User.first.posts.create(content: "first post on this awesome app!")

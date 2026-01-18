@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_many :followers, through: :follower_relationships, source: :following
   has_many :followings, through: :following_relationships, source: :follower
+
+  has_many :posts, foreign_key: :author_id
 end
