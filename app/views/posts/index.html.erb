@@ -8,12 +8,17 @@
             <div class="post time">
                 <%= post.created_at %>
             </div>
+            <div>
+                <% if post.author != current_user && !post.author.followers.include?(current_user)%>
+                    <%= button_to "Follow", user_followings_path, params: { following_id: post.author.id } %>
+                <% end %>
+            </div>
         </div>
         <div class="content">
             <%= post.content %>
         </div>
         <ul class="post-footer">
-            <li>Likes: <% post.likes %></li>
+            <li>Likes: <%= post.likes %></li>
         </ul>
     </div>
 <% end %>

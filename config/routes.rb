@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   resource :posts
+  resources :user_followings, only: [ :new, :create ]
 end
