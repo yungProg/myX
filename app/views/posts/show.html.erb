@@ -1,0 +1,41 @@
+<%= render "posts/shared/header"%>
+<div class="post-wrapper">
+    <div class="about-post">
+        <ul class="about-user">
+            <li><%= @post.author.username %></li>
+        </ul>
+        <div class="post time">
+            <%= @post.created_at %>
+        </div>
+        <div>
+            <% if @post.author != current_user && !@post.author.followers.include?(current_user)%>
+                <%= button_to "Follow", user_followings_path, params: { following_id: @post.author.id } %>
+            <% end %>
+        </div>
+    </div>
+    <div class="content">
+        <%= @post.content %>
+    </div>
+    <ul class="post-footer">
+        <li><%= button_to "Likes: #{@post.likes}", like_post_path(@post), method: :patch %></li>
+    </ul>
+    <div class="comments">
+        <%= form_with model: Comment.new do |f| %>
+            <div class="comment">
+                <%= f.text_area :message, placeholder: "Comment ...", autofocus: true %><br>
+                <%= f.hidden_field :post_id, value: @post.id %>
+            </div>
+            <%= f.submit "Comment" %>
+        <% end %>
+
+        <% @comments.each do |comment| %>
+            <div>
+                <%= comment.user.username %>
+                <%= comment.created_at %>
+            </div>
+            <div>
+                <%= comment.message %>
+            </div>
+        <% end %>
+    </div>
+</div>

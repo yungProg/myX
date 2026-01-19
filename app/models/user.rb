@@ -12,4 +12,5 @@ class User < ApplicationRecord
   has_many :followings, through: :following_relationships, source: :follower
 
   has_many :posts, foreign_key: :author_id
+  has_many :comments
 end
