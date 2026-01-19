@@ -20,6 +20,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def like
+    post = Post.find(params[:id])
+    post.update(likes: post.likes + 1)
+    redirect_back fallback_location: root_url
+  end
+
   private
 
   def post_params

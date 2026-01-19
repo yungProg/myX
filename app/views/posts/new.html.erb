@@ -1,4 +1,6 @@
+<%= link_to root_path do%>
 <h1>MyX</h1>
+<% end %>
 <%= form_with model: @post do |f| %>
     <div>
         <%= f.text_area :content, placeholder: "What's happening"%><br>

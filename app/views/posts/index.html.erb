@@ -18,7 +18,7 @@
             <%= post.content %>
         </div>
         <ul class="post-footer">
-            <li>Likes: <%= post.likes %></li>
+            <li><%= button_to "Likes: #{post.likes}", like_post_path(post), method: :patch %></li>
         </ul>
     </div>
 <% end %>
