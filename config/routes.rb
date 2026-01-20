@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   end
   resources :user_followings, only: [ :new, :create ]
   resource :comments
+  resource :profiles
 end

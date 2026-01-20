@@ -1,7 +1,13 @@
 <%= render "posts/shared/header"%>
+<% unless current_user.profile %>
+    <%= link_to "Create profile", new_profile_path %>
+<% else %>
+    <%= link_to "View profile", profiles_path(current_user) %>
+<% end %>
 <div class="post-wrapper">
     <div class="about-post">
         <ul class="about-user">
+            <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
             <li><%= @post.author.username %></li>
         </ul>
         <div class="post time">
@@ -30,6 +36,7 @@
 
         <% @comments.each do |comment| %>
             <div>
+                <%= image_tag avatar_url_for(current_user, size: 24) %>
                 <%= comment.user.username %>
                 <%= comment.created_at %>
             </div>

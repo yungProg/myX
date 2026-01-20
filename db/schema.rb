@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_01_19_213428) do
+ActiveRecord::Schema[8.1].define(version: 2026_01_20_010931) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -29,6 +29,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_01_19_213428) do
     t.string "integer"
     t.integer "likes"
     t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "date_of_birth"
+    t.string "location"
+    t.string "pfp"
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
   end
 
   create_table "user_followings", force: :cascade do |t|

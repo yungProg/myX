@@ -1,0 +1,18 @@
+<%= render 'posts/shared/header' %>
+<div>
+    <%= form_with model: @profile do |f| %>
+        <div>
+            <%= f.label :location %><br>
+            <%= f.text_field :location%>
+        </div>
+        <div>
+            <%= f.label :date_of_birth %><br>
+            <%= f.date_field :date_of_birth%>
+        </div>
+        <div>
+            <p>Errors</p>
+            <%= @profile.errors.full_messages %>
+        </div>
+        <%= f.submit %>
+    <% end %>
+</div>
