@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     @profile = current_user.build_profile(profile_params)
     if @profile.save
       flash[:success] = "Profile successfully created"
-      redirect_to @profile
+      redirect_to profiles_path(@profile)
     else
       flash[:error] = "Something went wrong"
       render "new", status: :unprocessable_entity

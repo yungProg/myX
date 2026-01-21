@@ -15,4 +15,6 @@ class User < ApplicationRecord
   has_many :comments
 
   has_one :profile
+
+  scope :other_users, ->(uid) { where.not("id = ?", uid) }
 end

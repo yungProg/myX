@@ -18,7 +18,8 @@ Rails.application.routes.draw do
       patch "like"
     end
   end
-  resources :user_followings, only: [ :new, :create ]
+  resources :user_followings, only: [ :destroy, :create, :update ]
   resource :comments
   resource :profiles
+  resources :users, only: [ :index ]
 end

@@ -1,0 +1,49 @@
+<%= render 'posts/shared/header' %>
+<h2>Users</h2>
+
+<ul>
+    <% @users.each do |user| %>
+        <li>
+            <%= user.username%>
+            <span>
+                <% if current_user.followings.include?(user) %>
+                    <%= button_to "Unfollow", user_following_path(user), method: :delete, data_turbo: { confirm: 'Are you sure?' } %>
+                <% else %>
+                    <%= button_to "Follow", user_followings_path, params: { following_id: user.id} %>
+                <% end %>
+            </span>
+        </li>
+    <% end %>
+</ul>
+
+<h3>Pending</h3>
+<ul>
+    <% @pending_followers.each do |pending_follower| %>
+        <li>
+            <span><%= pending_follower.username %></span>
+            <span><%= button_to "Accept", user_following_path(pending_follower), method: :patch, params: { follower_id: pending_follower.id } %></span>
+            <span><%= button_to "Reject", user_following_path(pending_follower), method: :delete, data_turbo: { confirm: 'Are you sure?' } %></span>
+        </li>
+    <% end %>
+</ul>
+<h3>Suggestions</h3>
+<ul>
+    <% @pending_followers.each do |pending| %>
+        
+    <% end %>
+</ul>
+<h3>Followings</h3>
+<ul>
+    <% @followings.each do |following| %>
+        <li>
+            <span><%= following.username %></span>
+            <span><%= button_to "Unfollow", user_following_path(following), method: :delete, data_turbo: { confirm: 'Are you sure?' } %></span>
+        </li>
+    <% end %>
+</ul>
+<h3>Followers</h3>
+<ul>
+    <% @followers.each do |follower| %>
+        <span><%= follower.username %></span>
+    <% end %>
+</ul>
