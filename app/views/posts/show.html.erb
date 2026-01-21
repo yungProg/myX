@@ -1,6 +1,6 @@
 <%= render "posts/shared/header"%>
 <% unless current_user.profile %>
-    <%= link_to "Create profile", new_profile_path %>
+    <%= link_to "Create profile", new_profiles_path %>
 <% else %>
     <%= link_to "View profile", profiles_path(current_user) %>
 <% end %>

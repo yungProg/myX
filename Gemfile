@@ -63,7 +63,7 @@ group :development do
 
   # Run test continuously in background
   gem "guard"
-   gem "guard-rspec", require: false
+  gem "guard-rspec", require: false
 end
 
 group :test do
@@ -75,3 +75,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "figaro"
+
+gem "letter_opener", group: :development
