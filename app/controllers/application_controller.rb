@@ -6,16 +6,11 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  after_action :send_welcome_mail, only: [ :create ], if: :devise_controller?
 
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [ :username, :email, :password ])
     devise_parameter_sanitizer.permit(:account_update, keys: [ :username, :email, :password, :current_password ])
-  end
-
-  def send_welcome_mail
-    UserMailer.with(user: current_user).welcome_email.deliver_later
   end
 end
