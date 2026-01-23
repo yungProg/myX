@@ -3,3 +3,5 @@
 <% end %>
 
 <%= link_to "Create post", new_post_path %>
+
+<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
