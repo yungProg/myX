@@ -64,6 +64,7 @@
 .actions > input{
     background-color: black;
     color: #fff;
+    cursor: pointer;
 }
 
 .sign-up-link {

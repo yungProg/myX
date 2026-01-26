@@ -1,7 +1,19 @@
-<%= link_to root_path do%>
-<h1>MyX</h1>
-<% end %>
-
-<%= link_to "Create post", new_post_path %>
-
-<%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+<div class="header">
+    <ul class="navbar">
+        <% unless current_user.profile %>
+            <%= link_to new_profiles_path do %>
+                <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
+            <% end %>
+        <% else %>
+            <%= link_to profiles_path(current_user) do %>
+                <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
+            <% end %>
+        <% end %>
+        <li>
+            <%= link_to root_path do%>
+                <h1>MyX</h1>
+            <% end %>
+        </li>
+        <li><%= link_to "Create post", new_post_path %></li>
+    </ul>
+</div>

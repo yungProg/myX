@@ -1,32 +1,29 @@
-<%= render "posts/shared/header"%>
-<% unless current_user.profile %>
-    <%= link_to "Create profile", new_profiles_path %>
-<% else %>
-    <%= link_to "View profile", profiles_path(current_user) %>
-<% end %>
-<% @posts.each do |post| %>
-    <%= link_to post do %>
-        <div class="post-wrapper">
-            <div class="about-post">
-                <ul class="about-user">
-                    <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
-                    <li><%= post.author.username %></li>
+<div class="container">
+    <%= render "posts/shared/header"%>
+    <% @posts.each do |post| %>
+        <%= link_to post do %>
+            <div class="post-wrapper">
+                <div class="about-post">
+                    <ul class="about-user">
+                        <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
+                        <li><%= post.author.username %></li>
+                    </ul>
+                    <div class="post time">
+                        <%= post.created_at %>
+                    </div>
+                    <div>
+                        <% if post.author != current_user && !post.author.followers.include?(current_user)%>
+                            <%= button_to "Follow", user_followings_path, params: { following_id: post.author.id } %>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="content">
+                    <%= post.content %>
+                </div>
+                <ul class="post-footer">
+                    <li><%= button_to "Likes: #{post.likes}", like_post_path(post), method: :patch %></li>
                 </ul>
-                <div class="post time">
-                    <%= post.created_at %>
-                </div>
-                <div>
-                    <% if post.author != current_user && !post.author.followers.include?(current_user)%>
-                        <%= button_to "Follow", user_followings_path, params: { following_id: post.author.id } %>
-                    <% end %>
-                </div>
             </div>
-            <div class="content">
-                <%= post.content %>
-            </div>
-            <ul class="post-footer">
-                <li><%= button_to "Likes: #{post.likes}", like_post_path(post), method: :patch %></li>
-            </ul>
-        </div>
+        <% end %>
     <% end %>
-<% end %>
+</div>
