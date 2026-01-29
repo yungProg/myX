@@ -1,48 +1,68 @@
-<%= render "posts/shared/header"%>
-<% unless current_user.profile %>
-    <%= link_to "Create profile", new_profiles_path %>
-<% else %>
-    <%= link_to "View profile", profiles_path(current_user) %>
-<% end %>
-<div class="post-wrapper">
-    <div class="about-post">
-        <ul class="about-user">
-            <li><%= image_tag avatar_url_for(current_user, size: 24) %></li>
-            <li><%= @post.author.username %></li>
-        </ul>
-        <div class="post time">
-            <%= @post.created_at %>
+<div class="container">
+    <%= render "posts/shared/header"%>
+
+    <div class="post-wrapper comment">
+        <div class="about-post">
+            <ul class="about-author">
+                <li class="author-pfp"><%= image_tag avatar_url_for(current_user, size: 24) %></li>
+                <ul>
+                    <li class="author-name"><%= @post.author.username %></li>
+                    <li class="author-email"><span class="center-dot">&centerdot;</span> <%= @post.author.email %></li>
+                </ul>
+            </ul>
+            <div class="post-age">
+                <span class="center-dot">&centerdot;</span> <%= post_duration(@post.created_at) %>
+            </div>
+            <div>
+                <% if @post.author != current_user && !@post.author.followers.include?(current_user)%>
+                    <%= button_to "Follow", user_followings_path, params: { following_id: @post.author.id } %>
+                <% end %>
+            </div>
         </div>
-        <div>
-            <% if @post.author != current_user && !@post.author.followers.include?(current_user)%>
-                <%= button_to "Follow", user_followings_path, params: { following_id: @post.author.id } %>
+        <div class="post-content">
+            <%= @post.content %>
+        </div>
+        <ul class="post-footer show">
+            <li>
+                <%= button_to like_post_path(@post), method: :patch, class: "post-likes" do %>
+                    <svg id='Love_It_24' width='16' height='16' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                        <g transform="matrix(0.87 0 0 0.87 12 12)" >
+                        <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 12 21.932 L 2.2 11.84 C 0.43622990950336193 10.110050490724793 -0.00357478369561548 7.4368309801768255 1.1129999999999995 5.233000000000002 L 1.113 5.233 C 1.96317716517606 3.582683434644899 3.5474593475756717 2.4349890627634414 5.380544117644035 2.1414823272092622 C 7.2136288877123995 1.847975591655083 9.077050635803813 2.4436363956846874 10.399999999999999 3.7459999999999978 L 12 5.205 L 13.6 3.746 C 14.923137782367299 2.444056847115677 16.786421151149504 1.8486791333565913 18.619347300463986 2.1421604711438884 C 20.452273449778463 2.4356418089311855 22.03651255952265 3.5830240371264446 22.887 5.232999999999999 L 22.887 5.2330000000000005 C 24.00291128069385 7.436933215587228 23.563174313290446 10.109741075416393 21.8 11.84 Z" stroke-linecap="round" />
+                        </g>
+                    </svg>
+                    <span><%= @post.likes %></span>
+                <% end %>
+            </li>
+        </ul>
+        <div class="comments">
+            <% @comments.each do |comment| %>
+                <div class="post-wrapper comments">
+                    <div class="about-post">
+                        <ul class="about-author">
+                            <li class="author-pfp"><%= image_tag avatar_url_for(current_user, size: 24) %></li>
+                            <ul>
+                                <li class="author-name"><%= comment.user.username %></li>
+                                <li class="author-email"><span class="center-dot">&centerdot;</span> <%= comment.user.email %></li>
+                            </ul>
+                            <div class="post-age">
+                                <span class="center-dot">&centerdot;</span> <%= post_duration(comment.created_at) %>
+                            </div>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="post-content">
+                            <%= comment.message %>
+                        </div>
+                    </div>
+                </div>
             <% end %>
         </div>
     </div>
-    <div class="content">
-        <%= @post.content %>
-    </div>
-    <ul class="post-footer">
-        <li><%= button_to "Likes: #{@post.likes}", like_post_path(@post), method: :patch %></li>
-    </ul>
-    <div class="comments">
-        <%= form_with model: Comment.new do |f| %>
-            <div class="comment">
-                <%= f.text_area :message, placeholder: "Comment ...", autofocus: true %><br>
-                <%= f.hidden_field :post_id, value: @post.id %>
-            </div>
-            <%= f.submit "Comment" %>
-        <% end %>
-
-        <% @comments.each do |comment| %>
-            <div>
-                <%= image_tag avatar_url_for(current_user, size: 24) %>
-                <%= comment.user.username %>
-                <%= comment.created_at %>
-            </div>
-            <div>
-                <%= comment.message %>
-            </div>
-        <% end %>
-    </div>
+    <%= form_with model: Comment.new, class: "comment-form" do |f| %>
+        <div class="comment-box">
+            <%= f.text_area :message, placeholder: "Post your reply", autofocus: true %><br>
+            <%= f.hidden_field :post_id, value: @post.id %>
+        </div>
+        <%= f.submit "Post", class: "comment-action" %>
+    <% end %>
 </div>

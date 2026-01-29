@@ -1,0 +1,49 @@
+.post-wrapper {
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.34);
+}
+
+.post-wrapper ul {
+    list-style: none;
+    padding: 0;
+}
+
+.about-post, .about-author, .about-author > ul {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.author-name {
+    font-weight: 700;
+}
+
+.author-pfp > img, .comment img {
+    border-radius: 50%;
+}
+
+.post-content, .post-footer {
+    margin-left: 32px;
+}
+
+.post-footer {
+    margin-top: 8px;
+}
+
+.author-email, .post-age {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.post-likes {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    background-color: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.post-likes > span {
+    color: rgba(0, 0, 0, 0.7);
+}

@@ -1,0 +1,31 @@
+.post-wrapper.comment {
+    border-bottom: none;
+    padding: 10px;
+}
+
+.show.post-footer {
+    border-bottom: 1px solid black;
+    padding-bottom: 16px;
+}
+
+.post-wrapper.comments {
+    padding: 12px 0;
+}
+
+.comment-form {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    max-width: 800px;
+}
+
+.comment-form  textarea {
+    width: 100%;
+    padding: 6px 12px;
+}
+
+.comment-action {
+    display: block;
+    margin-left: auto;
+    padding: 6px 12px;
+}
