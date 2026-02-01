@@ -3,8 +3,8 @@
 <% end %>
 <%= form_with model: @post do |f| %>
     <div>
-        <%= f.text_area :content, placeholder: "What's happening"%><br>
-        <%= f.submit %>
+        <%= f.text_area :content, placeholder: "What's happening", class: "post-textarea" %><br>
+        <%= f.submit class: "action-post-submit" %>
     </div>
     <% if @post.errors.any? %>
         <p><%= @post.errors.full_messages.count %> <%= "error".pluralize(@post.errors.full_messages.count) %> prevented us from creating your post</p>

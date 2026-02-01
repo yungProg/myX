@@ -1,0 +1,12 @@
+.post-textarea {
+    border: 1px solid #000;
+    margin-top: 8px;
+}
+
+.action-post-submit {
+    background-color: #3333ff;
+    padding: 8px;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+}

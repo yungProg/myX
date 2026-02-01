@@ -77,3 +77,5 @@ gem "devise", "~> 4.9"
 gem "figaro"
 
 gem "letter_opener", group: :development
+
+gem "tailwindcss-rails", "~> 4.4"
