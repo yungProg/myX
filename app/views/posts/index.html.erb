@@ -15,7 +15,7 @@
                     </div>
                     <div>
                         <% if post.author != current_user && !post.author.followers.include?(current_user)%>
-                            <%= button_to "Follow", user_followings_path, params: { following_id: post.author.id } %>
+                            <%= button_to "Follow", user_followings_path, params: { following_id: post.author.id }, class: "follow-btn" %>
                         <% end %>
                     </div>
                 </div>
