@@ -1,4 +1,6 @@
 <%= render 'posts/shared/header' %>
+<%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
+
 <div>
     <%= form_with model: @profile do |f| %>
         <div>
