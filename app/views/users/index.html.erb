@@ -3,13 +3,13 @@
 
 <ul>
     <% @users.each do |user| %>
-        <li>
-            <%= user.username%>
-            <span>
+        <li class="grid grid-cols-2 mb-4 border-b users-list">
+            <span><%= user.username %></span>
+            <span class="col-start-2 col-end-3">
                 <% if current_user.followings.include?(user) %>
-                    <%= button_to "Unfollow", user_following_path(user), method: :delete, data_turbo: { confirm: 'Are you sure?' } %>
+                    <%= button_to "Unfollow", user_following_path(user), method: :delete, data: { turbo_confirm: "You will unfollow #{user.username}" }, class:"follow-btn" %>
                 <% else %>
-                    <%= button_to "Follow", user_followings_path, params: { following_id: user.id} %>
+                    <%= button_to "Follow", user_followings_path, params: { following_id: user.id}, class:"follow-btn" %>
                 <% end %>
             </span>
         </li>
@@ -35,15 +35,15 @@
 <h3>Followings</h3>
 <ul>
     <% @followings.each do |following| %>
-        <li>
+        <li class="grid grid-cols-2 mb-4 users-list">
             <span><%= following.username %></span>
-            <span><%= button_to "Unfollow", user_following_path(following), method: :delete, data_turbo: { confirm: 'Are you sure?' } %></span>
+            <span><%= button_to "Unfollow", user_following_path(following), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class:"follow-btn" %></span>
         </li>
     <% end %>
 </ul>
 <h3>Followers</h3>
 <ul>
     <% @followers.each do |follower| %>
-        <span><%= follower.username %></span>
+        <li><%= follower.username %></li>
     <% end %>
 </ul>
