@@ -19,10 +19,12 @@
 <h3>Pending</h3>
 <ul>
     <% @pending_followers.each do |pending_follower| %>
-        <li>
+        <li class="grid grid-cols-2 mb-4">
             <span><%= pending_follower.username %></span>
-            <span><%= button_to "Accept", user_following_path(pending_follower), method: :patch, params: { follower_id: pending_follower.id } %></span>
-            <span><%= button_to "Reject", user_following_path(pending_follower), method: :delete, data_turbo: { confirm: 'Are you sure?' } %></span>
+            <div class="flex gap-1">
+                <span><%= button_to "Accept", user_following_path(pending_follower), method: :patch, params: { follower_id: pending_follower.id }, class:"follow-btn" %></span>
+                <span><%= button_to "Reject", user_following_path(pending_follower), method: :delete, data: { turbo_confirm: 'Are you sure?' }, class:"follow-btn" %></span>
+            </div>
         </li>
     <% end %>
 </ul>
