@@ -13,11 +13,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
 
-  resources :posts do
-    member do
-      patch "like"
-    end
-  end
+  resources :posts
+  resources :likes, only: [ :create, :destroy ]
   resources :user_followings, only: [ :destroy, :create, :update ]
   resource :comments
   resource :profiles

@@ -1,14 +1,8 @@
 class Post < ApplicationRecord
+  has_many :likes
+  has_many :likers, through: :likes
+
   has_many :comments
   belongs_to :author, class_name: "User"
   validates :content, presence: true
-
-  before_create :set_default_likes
-
-
-  private
-
-  def set_default_likes
-    self.likes = 0
-  end
 end

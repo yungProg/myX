@@ -19,6 +19,9 @@ class User < ApplicationRecord
 
   has_one :profile
 
+  has_many :likeds, class_name: "Like", foreign_key: :user_id
+  has_many :liked_posts, through: :likeds, source: :post
+
   scope :other_users, ->(uid) { where.not("id = ?", uid) }
 
   def login

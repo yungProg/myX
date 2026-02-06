@@ -1,0 +1,10 @@
+<%= turbo_frame_tag post do %>
+    <%= button_to likes_path(post), params: {post_id: post.id}, class: "post-likes" do %>
+        <svg id='Love_It_24' width='16' height='16' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+            <g transform="matrix(0.87 0 0 0.87 12 12)" >
+            <path style="stroke: rgb(0,0,0); stroke-width: 1; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;" transform=" translate(-12, -12)" d="M 12 21.932 L 2.2 11.84 C 0.43622990950336193 10.110050490724793 -0.00357478369561548 7.4368309801768255 1.1129999999999995 5.233000000000002 L 1.113 5.233 C 1.96317716517606 3.582683434644899 3.5474593475756717 2.4349890627634414 5.380544117644035 2.1414823272092622 C 7.2136288877123995 1.847975591655083 9.077050635803813 2.4436363956846874 10.399999999999999 3.7459999999999978 L 12 5.205 L 13.6 3.746 C 14.923137782367299 2.444056847115677 16.786421151149504 1.8486791333565913 18.619347300463986 2.1421604711438884 C 20.452273449778463 2.4356418089311855 22.03651255952265 3.5830240371264446 22.887 5.232999999999999 L 22.887 5.2330000000000005 C 24.00291128069385 7.436933215587228 23.563174313290446 10.109741075416393 21.8 11.84 Z" stroke-linecap="round" />
+            </g>
+        </svg>
+        <span><%= post.likes.count %></span>
+    <% end %>
+<% end %>
