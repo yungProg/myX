@@ -4,8 +4,8 @@
     <div class="post-wrapper comment">
         <div class="about-post">
             <ul class="about-author">
-                <% if current_user.profile.avatar.attached? %>
-                <li class="author-pfp"><%= image_tag current_user.profile.avatar.variant(:pin) %></li>
+                <% if @post.author.profile.avatar.attached? %>
+                <li class="author-pfp"><%= image_tag @post.author.profile.avatar.variant(:pin) %></li>
                 <% else %>
                 <li class="author-pfp"><%= image_tag avatar_url_for(current_user, size: 24) %></li>
                 <% end %>
