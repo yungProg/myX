@@ -4,7 +4,11 @@
 <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %>
 <h2>About</h2>
 <ul>
+    <% if @profile.avatar.attached? %>
+    <li><%= image_tag @profile.avatar.variant(:thumb) %></li>
+    <% else %>
     <li><%= image_tag @profile.pfp %></li>
+    <% end %>
     <li>Username: <%= current_user.username %></li>
     <li>Email: <%= current_user.email %></li>
     <li>Location: <%= @profile.location %></li>

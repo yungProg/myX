@@ -490,6 +490,7 @@ DEPENDENCIES
   rails (~> 8.1.2)
   rspec-rails (~> 8.0.0)
   rubocop-rails-omakase
+  ruby-vips
   selenium-webdriver
   solid_cable
   solid_cache

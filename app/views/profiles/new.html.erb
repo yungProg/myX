@@ -4,6 +4,9 @@
 <div>
     <%= form_with model: @profile do |f| %>
         <div>
+            <%= f.file_field :avatar%>
+        </div>
+        <div>
             <%= f.label :location %><br>
             <%= f.text_field :location%>
         </div>

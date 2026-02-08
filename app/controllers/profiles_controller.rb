@@ -21,6 +21,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.expect(profile: [ :location, :date_of_birth ])
+    params.expect(profile: [ :location, :date_of_birth, :avatar ])
   end
 end

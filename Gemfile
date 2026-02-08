@@ -79,3 +79,5 @@ gem "figaro"
 gem "letter_opener", group: :development
 
 gem "tailwindcss-rails", "~> 4.4"
+
+gem "ruby-vips"
