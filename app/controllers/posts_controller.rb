@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       flash[:notice] = "Post created successfully"
@@ -28,6 +28,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.expect(post: [ :content ])
+    params.expect(post: [ :content, images: [] ])
   end
 end

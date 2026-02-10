@@ -40,7 +40,7 @@
                 <%= post.content %>
             </div>
             <ul class="post-footer">
-                <li><%= button_to "Likes: #{post.likes}", likes_path(post), params: {post_id: post.id}%></li>
+                <li><%= button_to "Likes: #{post.likes.count}", likes_path(post), params: {post_id: post.id}%></li>
             </ul>
         </div>
     <% end %>

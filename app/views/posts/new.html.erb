@@ -4,6 +4,9 @@
 <%= form_with model: @post do |f| %>
     <div>
         <%= f.text_area :content, placeholder: "What's happening", class: "post-textarea" %><br>
+        <div>
+            <%= f.file_field :images, multiple: true %>
+        </div>
         <%= f.submit class: "action-post-submit" %>
     </div>
     <% if @post.errors.any? %>

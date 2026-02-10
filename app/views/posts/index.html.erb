@@ -27,6 +27,13 @@
                 <div class="post-content">
                     <%= post.content %>
                 </div>
+                <div>
+                    <% post.images.each do |image| %>
+                        <%= link_to url_for(image) do %>
+                        <%= image_tag image, width: 300 %>
+                        <% end %>
+                    <% end %>
+                </div>
             <% end %>
             <ul class="post-footer">
                 <li>

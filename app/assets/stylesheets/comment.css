@@ -1,6 +1,7 @@
 .post-wrapper.comment {
     border-bottom: none;
     padding: 10px;
+    padding-bottom: 130px;
 }
 
 .show.post-footer {
@@ -13,10 +14,11 @@
 }
 
 .comment-form {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     max-width: 800px;
+    background: #fff;
 }
 
 .comment-form  textarea {

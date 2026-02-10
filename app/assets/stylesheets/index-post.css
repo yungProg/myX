@@ -18,7 +18,12 @@
     font-weight: 700;
 }
 
-.author-pfp > img, .comment img {
+.author-pfp > img {
+    width: 25px;
+    aspect-ratio: 1/1;
+}
+
+.author-pfp > img, .comment li img {
     border-radius: 50%;
 }
 
